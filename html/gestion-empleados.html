@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crud de estudiantes</title>
+</head>
+
+<body>
+    <h2>Gestión de empleados</h2>
+    <form id="frmEmpleados">
+        <label for="nombre">Nombre:</label>
+        <input type="text" name="nombre" id="nombre" required>
+        <label for="apellido">Puesto:</label>
+        <input type="text" name="puesto" id="puesto" required>
+        <label for="salario">Salario:</label>
+        <input type="number" name="salario" id="salario" required>
+        <button type="submit" id="btnGuardar">Guardar</button>
+    </form>
+    <h3>Listado de empleados</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>Puesto</th>
+                <th>Salario</th>
+            </tr>
+        </thead>
+        <tbody id="tableEmpleados">
+
+        </tbody>
+    </table>
+
+    <script src="/aplicacion-tecnologias-web-main/ProyectoFinal/scripts/crud.js"></script>
+</body>
+
+</html>
