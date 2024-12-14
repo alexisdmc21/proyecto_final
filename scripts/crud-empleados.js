@@ -1,6 +1,4 @@
-let empleados = [] 
-
-///PRUEBA
+let empleados =JSON.parse(localStorage.getItem('empleados')) || []
 
 const renderizarTabla = () => {
     const tableEmpleados = document.getElementById('tableEmpleados')
@@ -27,15 +25,14 @@ let editarIndex = null;
 const guardarEmpleados = (event) => {
     event.preventDefault()
 
+    const id=document.getElementById('id').value
     const nombre = document.getElementById('nombre').value
     const puesto = document.getElementById('puesto').value
     const salario = document.getElementById('salario').value
 
-    
-
     if (editarIndex !== null) {
         empleados[editarIndex] = {
-            id: empleados[editarIndex].id,
+            id,
             nombre,
             puesto,
             salario
@@ -43,7 +40,7 @@ const guardarEmpleados = (event) => {
         editarIndex = null
     } else {
         const nuevoEmpleado = {
-            id: empleados.length + 1,
+            id,
             nombre,
             puesto,
             salario
@@ -52,6 +49,8 @@ const guardarEmpleados = (event) => {
         empleados.push(nuevoEmpleado)
     }
 
+    localStorage.setItem('empleados', JSON.stringify(empleados))
+
     document.getElementById('frmEmpleados').reset();
     renderizarTabla()
 }
@@ -59,6 +58,7 @@ const guardarEmpleados = (event) => {
 const editarEmpleados = (index) => {
     const empleado = empleados[index];
 
+    document.getElementById('id').value = empleado.id;
     document.getElementById('nombre').value = empleado.nombre;
     document.getElementById('puesto').value = empleado.puesto;
     document.getElementById('salario').value = empleado.salario;
@@ -69,6 +69,7 @@ const editarEmpleados = (index) => {
 const eliminarEmpleado = (index) => {
     if (confirm('Está seguro de eliminar?')) {
         empleados.splice(index, 1)
+        localStorage.setItem('empleados', JSON.stringify(empleados))
         renderizarTabla()
     }
 }

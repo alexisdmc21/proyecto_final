@@ -4,17 +4,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Crud de estudiantes</title>
+    <title>CRUD Empleados</title>
 </head>
 
 <body>
     <h2>Gestión de empleados</h2>
     <form id="frmEmpleados">
-        <label for="nombre">Nombre:</label>
+        <label for="ID">ID: </label>
+        <input type="number" name="id" id="id" required>
+        <label for="nombre">Nombre: </label>
         <input type="text" name="nombre" id="nombre" required>
-        <label for="apellido">Puesto:</label>
+        <label for="apellido">Puesto: </label>
         <input type="text" name="puesto" id="puesto" required>
-        <label for="salario">Salario:</label>
+        <label for="salario">Salario: </label>
         <input type="number" name="salario" id="salario" required>
         <button type="submit" id="btnGuardar">Guardar</button>
     </form>
@@ -33,7 +35,7 @@
         </tbody>
     </table>
 
-    <script src="/aplicacion-tecnologias-web-main/ProyectoFinal/scripts/crud.js"></script>
+    <script src="/scripts/crud-empleados.js"></script>
 </body>
 
 </html>

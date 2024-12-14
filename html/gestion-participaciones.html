@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD Participaciones</title>
+</head>
+
+<body>
+    <h2>Gestión de participaciones</h2>
+    <form id="frmParticipacion">
+        <label for="ID_e">Id del empleado: </label>
+        <input type="number" name="id_em" id="id_em" placeholder="Ingrese el ID del empleado" required>
+        <label for="ID_p">Id del proyecto: </label>
+        <input type="number" name="id_pr" id="id_pr" placeholder="Ingrese el ID del proyecto" required>
+        <label for="rol">Rol:</label>
+        <input type="text" name="rol" id="rol" placeholder="Ingrese el rol" required>
+        <button type="submit" id="btnGuardar">Guardar</button>
+    </form>
+    <h3>Listado de proyectos</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Id empleado</th>
+                <th>Nombre empleado</th>
+                <th>Id proyecto</th>
+                <th>Nombre proyecto</th>
+                <th>Rol</th>
+            </tr>
+        </thead>
+        <tbody id="tableParticipaciones">
+
+        </tbody>
+    </table>
+
+    <script src="/scripts/crud-participaciones.js"></script>
+</body>
+
+</html>
