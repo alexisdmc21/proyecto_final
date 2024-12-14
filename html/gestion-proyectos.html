@@ -1,23 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GESTION DE LIBROS</title>
+    <title>Crud de estudiantes</title>
 </head>
-<!--guardar-->
+
 <body>
-    <h1>Gestion de Libros</h1>
-    <form id="bookForm">
-        <input type="text" id="bookTitle" placeholder="Titulo" required>
-        <input type="text" id="bookAuthor" placeholder="Autor del libro" required>
-        <button type="submit">Agregar Libro</button>
+    <h2>Gestión de Proyectos</h2>
+    <form id="frmProyecto">
+        <label for="ID">ID: </label>
+        <input type="number" name="id" id="id" placeholder="Ingrese el ID" required>
+        <label for="nombre">Nombre del proyecto:</label>
+        <input type="text" name="nombre" id="nombre" placeholder="Ingrese el nombre del proyecto" required>
+        <label for="fechaIn">Fecha de inicio:</label>
+        <input type="date" name="fechaIn" id="fechaIn" required>
+        <label for="fechafin">Fecha de finalización:</label>
+        <input type="date" name="fechafin" id="fechafin" required>
+        <button type="submit" id="btnGuardar">Guardar</button>
     </form>
+    <h3>Listado de proyectos</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nombre del Proyecto</th>
+                <th>Fecha de Inicio </th>
+                <th>Fecha de Finalización</th>
+            </tr>
+        </thead>
+        <tbody id="tableProyectos">
 
-    <div class="book-list" id="bookList">
+        </tbody>
+    </table>
 
-    </div>
-
-    <script src="gestionLibros.js"></script>
+    <script src="/scripts/crud-proyectos.js"></script>
 </body>
+
 </html>
