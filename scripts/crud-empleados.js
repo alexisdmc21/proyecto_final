@@ -26,7 +26,7 @@ const renderizarTabla = () => {
             <td>${empleado.salario}</td>
             <td>
                 <button id="btnEditar" class="btn btn-warning" onClick="editarEmpleados(${index})">Editar</button>
-                <button class="btn btn-danger" onclick="eliminarEmpleado(${index})">Elimninar</button>
+                <button class="btn btn-danger" onclick="eliminarEmpleado(${index})">Eliminar</button>
             </td>
         `
 
