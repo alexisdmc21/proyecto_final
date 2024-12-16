@@ -1,3 +1,16 @@
+const frmEmpleados = document.getElementById("frmEmpleados");
+const hideButton = document.querySelector("#hideButton");
+
+hideButton.addEventListener('click', () => {
+    if (frmEmpleados.style.display === 'none') {
+        frmEmpleados.style.display = 'block';
+        hideButton.textContent = 'Cancelar';
+    } else {
+        frmEmpleados.style.display = 'none';
+        hideButton.textContent = '+ Agregar empleado'; 
+    }
+});
+
 let empleados =JSON.parse(localStorage.getItem('empleados')) || []
 
 const renderizarTabla = () => {
@@ -12,8 +25,8 @@ const renderizarTabla = () => {
             <td>${empleado.puesto}</td>
             <td>${empleado.salario}</td>
             <td>
-                <button id="btnEditar" onClick="editarEmpleados(${index})">Editar</button>
-                <button onclick="eliminarEmpleado(${index})">Elimninar</button>
+                <button id="btnEditar" class="btn btn-warning" onClick="editarEmpleados(${index})">Editar</button>
+                <button class="btn btn-danger" onclick="eliminarEmpleado(${index})">Elimninar</button>
             </td>
         `
 
