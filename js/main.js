@@ -1,23 +1,27 @@
-import { publicarPost, renderizarPosts } from "./posts.js";
+import { publicarPost, renderizarPosts } from "./posts.js"
 
-document.addEventListener("DOMContentLoaded", () => {
-    document.getElementById("btn-crear-post").addEventListener("click", (event) => {
-        event.preventDefault();
+document.getElementById('btn-crear-post').addEventListener('click', (event) => {
+    event.preventDefault()
 
-        const titulo = document.getElementById("titulo").value.trim();
-        const descripcion = document.getElementById("descripcion").value.trim();
-        const fechaCreacion = document.getElementById("fechaCreacion").value;
+    // Obtener valores del formulario
+    const titulo = document.getElementById('titulo').value
+    const descripcion = document.getElementById('descripcion').value
+    const fechaCreacion = document.getElementById('fechaCreacion').value
 
-        if (!titulo || !descripcion || !fechaCreacion) {
-            alert("Por favor, completa todos los campos.");
-            return;
-        }
+    // Validar campos
+    if (!titulo || !descripcion || !fechaCreacion) {
+        alert("Existen campos sin llenar!!")
+        return
+    }
 
-        publicarPost(titulo, descripcion, fechaCreacion);
+    // Crear el post
+    publicarPost(titulo, descripcion, fechaCreacion)
 
-        document.getElementById("titulo").value = "";
-        document.getElementById("descripcion").value = "";
-        document.getElementById("fechaCreacion").value = "";
-    });
-    renderizarPosts();
+    // Limpiar el formulario
+    document.getElementById('titulo').value = ''
+    document.getElementById('descripcion').value = ''
+    document.getElementById('fechaCreacion').value = ''
+
+    // Renderizar los posts actualizados
+    renderizarPosts()
 });

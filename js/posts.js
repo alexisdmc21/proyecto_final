@@ -1,5 +1,5 @@
 
-export let posts = []
+let posts = []
 
 export const renderizarPosts = () => {
     const listaPosts = document.getElementById("lista-posts")
@@ -7,32 +7,33 @@ export const renderizarPosts = () => {
 
     posts.forEach((post, index) => {
         const postReds = document.createElement("div")
+        postReds.classList.add("post")
         postReds.innerHTML = `
         <h2>${post.titulo}</h2>
         <b>${post.descripcion}</b>
         <h4>${post.fechaCreacion}</h4>
+        <button onclick="eliminarPost(${index})">Eliminar</button>
+            <div id="comentarios-${index}">
+                <h4>Comentarios: </h4>
+                <div class="lista-comentarios"></div>
+                <input type="text" placeholder="Agregar comentario" id="comentario-${index}">
+                <button onclick="agregarComentario(${index})">Comentar</button>
+            </div>
         `
         listaPosts.appendChild(postReds)
     })
 }
 
-export let editarIndex = null
+export const publicarPost = (titulo, descripcion, fechaCreacion) => {
 
-export const publicarPost = (event) => {
-    
-    event.preventDefault()
     const nuevoPost = {
         titulo,
         descripcion,
         fechaCreacion,
+        comentarios:[]
     };
-    posts.push(nuevoPost);
-
-    document.getElementById("titulo").value = "";
-    document.getElementById("descripcion").value = "";
-    document.getElementById("fechaCreacion").value = "";
-
-    renderizarPosts();
+    posts.push(nuevoPost)
 };
+
 
 
