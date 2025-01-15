@@ -2,8 +2,8 @@
 let posts = []
 
 export const renderizarPosts = () => {
-    const listaPosts = document.getElementById("lista-posts")
-    listaPosts.innerHTML = ""
+    const listaPosts =$("#lista-posts")
+    listaPosts.empty();
 
     posts.forEach((post, index) => {
         const postReds = document.createElement("div")
@@ -20,7 +20,7 @@ export const renderizarPosts = () => {
                 <button onclick="agregarComentario(${index})">Comentar</button>
             </div>
         `
-        listaPosts.appendChild(postReds)
+        listaPosts.append(postReds)
     })
 }
 

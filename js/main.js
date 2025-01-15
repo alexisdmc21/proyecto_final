@@ -4,6 +4,7 @@ document.getElementById('btn-crear-post').addEventListener('click', (event) => {
     event.preventDefault()
 
     // Obtener valores del formulario
+
     const titulo = document.getElementById('titulo').value
     const descripcion = document.getElementById('descripcion').value
     const fechaCreacion = document.getElementById('fechaCreacion').value
