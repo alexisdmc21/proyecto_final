@@ -1,13 +1,13 @@
-import { publicarPost, renderizarPosts } from "./posts.js"
+import { publicarPost, renderizarPosts } from './posts.js';
 
 document.getElementById('btn-crear-post').addEventListener('click', (event) => {
     event.preventDefault()
 
     // Obtener valores del formulario
 
-    const titulo = document.getElementById('titulo').value
-    const descripcion = document.getElementById('descripcion').value
-    const fechaCreacion = document.getElementById('fechaCreacion').value
+    const titulo = $('#titulo').val()
+    const descripcion = $('#descripcion').val()
+    const fechaCreacion = $('#fechaCreacion').val()
 
     // Validar campos
     if (!titulo || !descripcion || !fechaCreacion) {
@@ -19,9 +19,10 @@ document.getElementById('btn-crear-post').addEventListener('click', (event) => {
     publicarPost(titulo, descripcion, fechaCreacion)
 
     // Limpiar el formulario
-    document.getElementById('titulo').value = ''
-    document.getElementById('descripcion').value = ''
-    document.getElementById('fechaCreacion').value = ''
+
+    $('#titulo').val('')
+    $('#descripcion').val('')
+    $('#fechaCreacion').val('')
 
     // Renderizar los posts actualizados
     renderizarPosts()

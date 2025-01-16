@@ -1,26 +1,31 @@
+import { mostrarComentarios } from "./comments.js";
 
 let posts = []
 
 export const renderizarPosts = () => {
-    const listaPosts =$("#lista-posts")
+    const listaPosts =$('#lista-posts')
     listaPosts.empty();
 
     posts.forEach((post, index) => {
-        const postReds = document.createElement("div")
-        postReds.classList.add("post")
-        postReds.innerHTML = `
-        <h2>${post.titulo}</h2>
-        <b>${post.descripcion}</b>
-        <h4>${post.fechaCreacion}</h4>
-        <button onclick="eliminarPost(${index})">Eliminar</button>
-            <div id="comentarios-${index}">
-                <h4>Comentarios: </h4>
-                <div class="lista-comentarios"></div>
-                <input type="text" placeholder="Agregar comentario" id="comentario-${index}">
-                <button onclick="agregarComentario(${index})">Comentar</button>
-            </div>
-        `
-        listaPosts.append(postReds)
+        const $postReds = $('<div></div>')
+            .addClass('post')
+            .html(`
+                <h2>${post.titulo}</h2>
+                <b>${post.descripcion}</b>
+                <h4>${post.fechaCreacion}</h4>
+            `);
+    
+        const $buttonEliminar = $('<button></button>')
+            .text('Eliminar post')
+            .on('click', () => eliminarPost(index));
+
+        const $aggComentario =$('<button></button>')
+            .text('Agregar comentario')
+            .on('click', ()=> mostrarComentarios(index))
+    
+        $postReds.append($buttonEliminar, $aggComentario);
+        $('#lista-posts').append($postReds);
+        $postReds.fadeIn(500);
     })
 }
 
@@ -35,5 +40,6 @@ export const publicarPost = (titulo, descripcion, fechaCreacion) => {
     posts.push(nuevoPost)
 };
 
+export const obtenerPosts = () => posts;
 
 
