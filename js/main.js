@@ -1,29 +1,35 @@
-import { publicarPost, renderizarPosts } from './posts.js';
-
-document.getElementById('btn-crear-post').addEventListener('click', (event) => {
-    event.preventDefault()
-
-    // Obtener valores del formulario
-
-    const titulo = $('#titulo').val()
-    const descripcion = $('#descripcion').val()
-    const fechaCreacion = $('#fechaCreacion').val()
-
-    // Validar campos
-    if (!titulo || !descripcion || !fechaCreacion) {
-        alert("Existen campos sin llenar!!")
-        return
-    }
-
-    // Crear el post
-    publicarPost(titulo, descripcion, fechaCreacion)
-
-    // Limpiar el formulario
-
-    $('#titulo').val('')
-    $('#descripcion').val('')
-    $('#fechaCreacion').val('')
-
-    // Renderizar los posts actualizados
-    renderizarPosts()
-});
+$(document).ready(() => {
+    //Array de los post, con sus respectivos comentarios
+    let arraypost = [];
+  
+    //Filtrar por palabra clave
+    $("#filtrar_boton").on("click", () => {
+      let palabraclave = $("#filtrar_elementos").val();
+  
+      post = $(".post");
+      arraypost = post.toArray();
+  
+      if ($("#filtrar_elementos").val() === "") {
+        $("#mostrar_filtrados").hide();
+        $("#mostrar").show();
+        arraypost.forEach((element) => {
+          $("#mostrar").append(element);
+        });
+      } else {
+        $("#mostrar").hide();
+        $("#mostrar_filtrados").show();
+        $("#t_filtro").text(
+          `Post que coinciden con la palabra clave: ${palabraclave}`
+        );
+  
+        arraypost.forEach((element, index) => {
+          let h2 = $(element).find("h2").text();
+          let encontrado = h2.includes(palabraclave);
+          if (encontrado) {
+            $("#mostrar_filtrados").append(element);
+          }
+        });
+      }
+    });
+  });
+  

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagina WEb Interactiva</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"
+        integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="content-filtro">
+        <h2>Filtrar post por palabra clave</h2>
+        <input id="filtrar_elementos" type="text">
+        <button id="filtrar_boton">Filtrar</button>
+    </div>
+
+    <button id="crearpost">Crear Post</button>
+    <div>
+        <div id="divform">
+            <h2>Nuevo Post</h2>
+            <form action="" id="formulario">
+                <span>Titulo</span>
+                <input id="intitulo" required type="text" placeholder="Titulo">
+                <span>Descripción</span>
+                <input id="indescripcion" required type="text" placeholder="Descripción">
+                <span>Fecha</span>
+                <input id="infecha" type="date">
+                <button>Crear</button>
+            </form>
+        </div>
+        <div id="divnuevocomentario">
+            <form id="formnuevocomentario" action="">
+                <h2>Nuevo comentario</h2>
+                <span>Comentar:</span>
+                <input id="idcomentario" type="text">
+                <button id="agregarcomentario">Agregar</button>
+            </form>
+        </div>
+        <div id="diveditarcomentario">
+            <form id="formeditarcomentario" action="">
+                <h2>Editar comentario</h2>
+                <span>Comentario:</span>
+                <input id="idcomentario_editar" type="text">
+                <button id="agregarcomentario_editado">Cambiar</button>
+            </form>
+        </div>
+        <div id="mostrar">
+        </div>
+        <div id="mostrar_filtrados">
+            <h3 id="t_filtro"></h3>
+        </div>
+    </div>
+    <script src="../js/main.js"></script>
+    <script src="../js/post.js"></script>
+    <script src="../js/comentarios.js"></script>
+</body>
+</html>

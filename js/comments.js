@@ -1,41 +1,67 @@
-import { obtenerPosts} from './posts.js';
+$(document).ready(() => {
+  $("#divnuevocomentario").hide();
+  $("#diveditarcomentario").hide();
 
-export const mostrarComentarios = (index) => {
-    const $comentariosDiv = $(`#comentarios-${index}`);
+  let comentarioid = 1;
+  let idpadre = "";
 
-    if ($comentariosDiv.length === 0) {
-        const $comentariosReds = $(`
-            <div id="comentarios-${index}" class="comentarios">
-                <h4>Comentarios:</h4>
-                <div class="lista-comentarios"></div>
-                <input type="text" placeholder="Escribe un comentario" id="comentario-${index}">
-                <button id="btn-comentar-${index}">Comentar</button>
-            </div>
-        `)
+  $(document).on("click", "#comentar", function () {
+    $("#divnuevocomentario").show();
+    idpadre = $(this).parent().attr("id");
+    $("#eliminar").hide();
+  });
 
-        $comentariosReds.find(`#btn-comentar-${index}`).on('click', () => {
-            agregarComentario(index);
-        });
+  $("#formnuevocomentario").on("submit", (e) => {
+    e.preventDefault();
 
-        $(`#lista-posts .post:eq(${index})`).append($comentariosReds);
+    if ($("#idcomentario").val() === "") {
+      alert("Los comentarios no pueden estar vacíos");
     } else {
-        $comentariosDiv.toggle(); // Alternar visibilidad si ya existe
+      let divcomentario = $("<div></div>", {
+        id: "comentario_post_" + comentarioid,
+      });
+      let comentario = $("<p></p>").text($("#idcomentario").val());
+      let Eliminar = $("<button></button>", { id: "eliminar_comentario" }).text(
+        "Eliminar"
+      );
+      let Editar = $("<button></button>", { id: "editar_comentario" }).text(
+        "Editar"
+      );
+
+      $(divcomentario).append(comentario);
+      $(divcomentario).append(Eliminar);
+      $(divcomentario).append(Editar);
+
+      Eliminar.on("click", () => divcomentario.remove());
+      Editar.on("click", () => {
+        Eliminar.hide();
+        $("#eliminar").hide();
+
+        $("#diveditarcomentario").show();
+        $("#idcomentario_editar").val(comentario.text());
+      });
+
+      $(`#${idpadre} #comentarios`).append(divcomentario);
+
+      //Editar comentario
+      $("#formeditarcomentario").on("submit", (e) => {
+        e.preventDefault();
+        if ($("#idcomentario_editar").val() === "") {
+          alert("Los comentarios no pueden estar vacíos");
+          $("#diveditarcomentario").hide();
+        } else {
+          comentario.text($("#idcomentario_editar").val());
+          $("#diveditarcomentario").hide();
+        }
+
+        Eliminar.show();
+        $("#eliminar").show();
+      });
+      comentarioid = comentarioid + 1;
+      $("#eliminar").show();
     }
-};
 
-const agregarComentario = (index) => {
-    const posts = obtenerPosts(); 
-    const comentario = $(`#comentario-${index}`).val();
-
-    if (!comentario) {
-        alert("Comentario vacío!!");
-        return;
-    }
-
-    posts[index].comentarios.push(comentario);
-
-    const $listaComentarios = $(`#comentarios-${index} .lista-comentarios`);
-    $listaComentarios.append(`<p>${comentario}</p>`);
-    
-    $(`#comentario-${index}`).val('');
-};
+    $("#idcomentario").val("");
+    $("#divnuevocomentario").hide();
+  });
+});
