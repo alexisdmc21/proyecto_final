@@ -10,11 +10,7 @@ $(document).ready(() => {
       arraypost = post.toArray();
   
       if ($("#filtrar_elementos").val() === "") {
-        $("#mostrar_filtrados").hide();
-        $("#mostrar").show();
-        arraypost.forEach((element) => {
-          $("#mostrar").append(element);
-        });
+        alert("Campo vacio")
       } else {
         $("#mostrar").hide();
         $("#mostrar_filtrados").show();
@@ -30,6 +26,7 @@ $(document).ready(() => {
           }
         });
       }
+      $("#filtrar_elementos").val("");
     });
   });
   

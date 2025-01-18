@@ -4,26 +4,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pagina WEb Interactiva</title>
+    <title>Red social</title>
     <script src="https://code.jquery.com/jquery-3.7.1.js"
         integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/css/style.css">
 </head>
-<body>
-    <div class="content-filtro">
-        <h2>Filtrar post por palabra clave</h2>
-        <input id="filtrar_elementos" type="text">
-        <button id="filtrar_boton">Filtrar</button>
-    </div>
 
-    <button id="crearpost">Crear Post</button>
+<body>
+    <header>
+        <h1>Gestión de Posts y Comentarios</h1>
+        <div class="content-filtro">
+            <button id="crearpost">Crear Post</button>
+            <input id="filtrar_elementos" type="text">
+            <button id="filtrar_boton">Filtrar</button>
+        </div>
+    </header>
+
     <div>
         <div id="divform">
             <h2>Nuevo Post</h2>
             <form action="" id="formulario">
                 <span>Titulo</span>
-                <input id="intitulo" required type="text" placeholder="Titulo">
+                <input id="intitulo" type="text" placeholder="Titulo">
                 <span>Descripción</span>
-                <input id="indescripcion" required type="text" placeholder="Descripción">
+                <input id="indescripcion" type="text" placeholder="Descripción">
                 <span>Fecha</span>
                 <input id="infecha" type="date">
                 <button>Crear</button>
@@ -51,8 +55,9 @@
             <h3 id="t_filtro"></h3>
         </div>
     </div>
-    <script src="../js/main.js"></script>
-    <script src="../js/post.js"></script>
-    <script src="../js/comentarios.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/posts.js"></script>
+    <script src="/js/comments.js"></script>
 </body>
+
 </html>
