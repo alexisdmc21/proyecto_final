@@ -1,17 +1,276 @@
-body {
-  font-family: Arial, sans-serif;
+/* General Reset */
+* {
   margin: 0;
   padding: 0;
-  background-color: #f4f4f4;
+  box-sizing: border-box;
 }
 
-header {
-  background-color: #2ba131;
-  color: white;
-  display: flex;
-  flex-direction: column; /* Cambié a columna para que el botón esté debajo del título */
-  align-items: center; /* Centra los elementos horizontalmente */
+body {
+  font-family: 'Arial', sans-serif;
+  background: url('../img/banner.png') no-repeat center center fixed;
+  background-size: cover;
+  color: #333;
   padding: 20px;
-  border-bottom: 1px solid #ccc;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  position: relative;
+  text-align: center;
 }
 
+body::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.548); /* Translucidez */
+  z-index: -1;
+}
+
+/* Header */
+header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 20px;
+  background-color: #00000000;
+  color: #000000;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+header img {
+  height: 50px;
+  margin-bottom: 10px;
+}
+
+header h1 {
+  font-size: 1.8rem;
+  text-align: center;
+}
+
+/* Buttons */
+button {
+  background-color: #08472ab7;
+  color: #fff;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #08472ab7;
+}
+
+/* Form Styles */
+form {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin: 20px auto;
+  width: 90%;
+  max-width: 600px;
+}
+
+form span {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+form input[type="text"],
+form input[type="date"],
+form select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+form button {
+  width: 100%;
+}
+
+/* Post Styling */
+.post {
+  background-color: #fff;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin: 20px auto;
+  width: 90%;
+  max-width: 600px;
+  position: relative; 
+}
+
+.post::before {
+  content: "";
+  display: block;
+  width: 70px; /* Ancho de la imagen */
+  height: 70px; /* Alto de la imagen */
+  margin: 0 auto 15px; /* Centrar la imagen y añadir espacio inferior */
+  background: url('../img/post.png') no-repeat center center;
+  background-size: cover; /* Ajusta el tamaño de la imagen */
+}
+
+.post h2 {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+  color: #08472ab7;
+}
+
+.post p {
+  margin-bottom: 15px;
+}
+
+.post span {
+  display: block;
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 10px;
+}
+
+.post button {
+  margin-right: 10px;
+}
+
+/* Comments Section */
+#comentarios {
+  margin-top: 15px;
+  padding: 10px;
+  background-color: #f9f9f9;
+  border-radius: 5px;
+  width: 90%;
+  max-width: 600px;
+  margin: 20px auto;
+  position: relative;
+}
+
+#comentarios div {
+  margin-bottom: 10px;
+  padding: 8px;
+  border: 1px solid #eee;
+  border-radius: 5px;
+  background-color: #fff;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  position: relative; /* Permite posicionar el ::before dentro de cada comentario */
+  padding-left: 65px; /* Espacio para la imagen al lado izquierdo */
+}
+
+#comentarios div::before {
+  content: "";
+  display: block;
+  width: 50px; /* Ancho de la imagen */
+  height: 50px; /* Alto de la imagen */
+  background: url('../img/comment.png') no-repeat center center;
+  background-size: cover; /* Ajusta el tamaño de la imagen */
+  position: absolute; /* Posiciona la imagen en relación con el contenedor */
+  top: 10px; /* Alinea la imagen verticalmente */
+  left: 10px; /* Alinea la imagen horizontalmente */
+}
+
+/* Nuevo comentario y Editar comentario */
+#divnuevocomentario,
+#diveditarcomentario {
+  display: none; 
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: 20px auto;
+  width: 90%;
+  max-width: 600px;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+}
+
+/* Botón para mostrar */
+.post .show-comment-form {
+  margin-top: 10px;
+}
+
+#comentarios div .show-edit-form {
+  margin-top: 10px;
+}
+
+/* Filter Section */
+.content-filtro {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.content-filtro input {
+  flex: 1;
+  max-width: 300px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.content-filtro button {
+  flex-shrink: 0;
+  max-width: 150px;
+  padding: 10px 15px;
+}
+
+/* Hide/Show Sections */
+#divform,
+#divnuevocomentario,
+#diveditarcomentario {
+  display: none;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .content-filtro {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .content-filtro input {
+    width: 100%;
+  }
+
+  .content-filtro button {
+    width: 100%;
+  }
+
+  button {
+    width: 100%;
+  }
+
+  #divnuevocomentario,
+  #diveditarcomentario {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+/* Footer */
+footer {
+  background-color: #3f3f3f6c;
+  color: #fff;
+  text-align: center;
+  padding: 10px 0;
+  margin-top: auto;
+  width: 100%;
+  position: relative;
+  bottom: 0;
+}
