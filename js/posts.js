@@ -10,9 +10,9 @@ $(document).ready(() => {
 
     const intitulo = $("#intitulo").val()
     const indescripcion = $("#indescripcion").val()
-    const infecha=$("#infecha").val()
+    const infecha = $("#infecha").val()
 
-    if (intitulo === "" || indescripcion === "") {
+    if (intitulo === "" || indescripcion === "" || infecha === "") {
       alert("Ingresa una publicación válida");
     } else {
       $("#divform").hide();

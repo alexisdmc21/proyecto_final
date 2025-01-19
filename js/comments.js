@@ -11,16 +11,26 @@ $(document).ready(() => {
     $("#eliminar").hide();
   });
 
+  $("#cancelarcomentario").on("click", () => {
+    $("#divnuevocomentario").hide();
+    $("#eliminar").show();
+    $("#idcomentario").val(""); 
+  });
+
   $("#formnuevocomentario").on("submit", (e) => {
     e.preventDefault();
 
-    if ($("#idcomentario").val() === "") {
+    const idcomentario=$("#idcomentario").val()
+
+
+    if (idcomentario === "") {
       alert("Los comentarios no pueden estar vacíos");
+        $("#eliminar").show();
     } else {
       let divcomentario = $("<div></div>", {
         id: "comentario_post_" + comentarioid,
       });
-      let comentario = $("<p></p>").text($("#idcomentario").val());
+      let comentario = $("<p></p>").text(idcomentario);
       let Eliminar = $("<button></button>", { id: "eliminar_comentario" }).text(
         "Eliminar"
       );
@@ -46,11 +56,14 @@ $(document).ready(() => {
       //Editar comentario
       $("#formeditarcomentario").on("submit", (e) => {
         e.preventDefault();
-        if ($("#idcomentario_editar").val() === "") {
+
+        const idcomentario_editar=$("#idcomentario_editar").val()
+
+        if ( idcomentario_editar=== "") {
           alert("Los comentarios no pueden estar vacíos");
           $("#diveditarcomentario").hide();
         } else {
-          comentario.text($("#idcomentario_editar").val());
+          comentario.text(idcomentario_editar);
           $("#diveditarcomentario").hide();
         }
 
@@ -59,9 +72,10 @@ $(document).ready(() => {
       });
       comentarioid = comentarioid + 1;
       $("#eliminar").show();
+      $("#divnuevocomentario").hide();
     }
 
     $("#idcomentario").val("");
-    $("#divnuevocomentario").hide();
+
   });
 });
