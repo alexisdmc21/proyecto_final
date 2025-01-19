@@ -34,8 +34,8 @@ header {
   align-items: center;
   justify-content: center;
   padding: 10px 20px;
-  background-color: #00000000;
-  color: #000000;
+  background: transparent;
+  color: #000;
   border-radius: 8px;
   margin-bottom: 20px;
 }
@@ -47,10 +47,8 @@ header img {
 
 header h1 {
   font-size: 1.8rem;
-  text-align: center;
 }
 
-/*Boton*/
 button {
   background-color: #08472ab7;
   color: #fff;
@@ -62,11 +60,10 @@ button {
 }
 
 button:hover {
-  background-color: #08472ab7;
+  background-color: #062d1f;
 }
 
-/* Form Styles */
-form {
+form, .post, #comentarios {
   background-color: #fff;
   padding: 20px;
   border-radius: 8px;
@@ -74,17 +71,16 @@ form {
   margin: 20px auto;
   width: 90%;
   max-width: 600px;
+  position: relative;
 }
 
-form span {
+form span, .post span {
   display: block;
   margin-bottom: 10px;
   font-weight: bold;
 }
 
-form input[type="text"],
-form input[type="date"],
-form select {
+form input, form select {
   width: 100%;
   padding: 10px;
   margin-bottom: 15px;
@@ -92,35 +88,22 @@ form select {
   border-radius: 5px;
 }
 
-form button {
-  width: 100%;
-}
-
-/* Post Styling */
 .post {
-  background-color: #fff;
-  padding: 20px;
-  margin-bottom: 20px;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  margin: 20px auto;
-  width: 90%;
-  max-width: 600px;
-  position: relative; 
+  position: relative;
 }
 
 .post::before {
   content: "";
   display: block;
-  width: 70px; /* Ancho de la imagen */
-  height: 70px; /* Alto de la imagen */
-  margin: 0 auto 15px; /* Centrar la imagen y añadir espacio inferior */
+  width: 70px;
+  height: 70px;
+  margin: 0 auto 15px;
   background: url('../img/post.png') no-repeat center center;
-  background-size: cover; /* Ajusta el tamaño de la imagen */
+  background-size: cover;
 }
 
 .post h2 {
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   margin-bottom: 10px;
   color: #08472ab7;
 }
@@ -129,79 +112,37 @@ form button {
   margin-bottom: 15px;
 }
 
-.post span {
-  display: block;
-  font-size: 0.9rem;
-  color: #666;
-  margin-bottom: 10px;
-}
-
 .post button {
-  margin-right: 10px;
-}
-
-/* Comments Section */
-#comentarios {
-  margin-top: 15px;
-  padding: 10px;
-  background-color: #f9f9f9;
+  margin: 10px;
+  padding: 10px 15px;
+  border: none;
   border-radius: 5px;
-  width: 90%;
-  max-width: 600px;
-  margin: 20px auto;
-  position: relative;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: 120px;
 }
 
 #comentarios div {
   margin-bottom: 10px;
-  padding: 8px;
+  padding: 8px 0 8px 65px;
   border: 1px solid #eee;
   border-radius: 5px;
   background-color: #fff;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
-  position: relative; /* Permite posicionar el ::before dentro de cada comentario */
-  padding-left: 65px; /* Espacio para la imagen al lado izquierdo */
+  position: relative;
 }
 
 #comentarios div::before {
   content: "";
-  display: block;
-  width: 50px; /* Ancho de la imagen */
-  height: 50px; /* Alto de la imagen */
+  width: 50px;
+  height: 50px;
   background: url('../img/comment.png') no-repeat center center;
-  background-size: cover; /* Ajusta el tamaño de la imagen */
-  position: absolute; /* Posiciona la imagen en relación con el contenedor */
-  top: 10px; /* Alinea la imagen verticalmente */
-  left: 10px; /* Alinea la imagen horizontalmente */
-}
-
-/* Nuevo comentario y Editar comentario */
-#divnuevocomentario,
-#diveditarcomentario {
-  display: none; 
+  background-size: cover;
   position: absolute;
-  left: 0;
-  right: 0;
-  margin: 20px auto;
-  width: 90%;
-  max-width: 600px;
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  z-index: 10;
+  top: 10px;
+  left: 10px;
 }
 
-/* Botón para mostrar */
-.post .show-comment-form {
-  margin-top: 10px;
-}
-
-#comentarios div .show-edit-form {
-  margin-top: 10px;
-}
-
-/* Filter Section */
 .content-filtro {
   display: flex;
   justify-content: center;
@@ -220,17 +161,8 @@ form button {
 .content-filtro button {
   flex-shrink: 0;
   max-width: 150px;
-  padding: 10px 15px;
 }
 
-/* Hide/Show Sections */
-#divform,
-#divnuevocomentario,
-#diveditarcomentario {
-  display: none;
-}
-
-/* Responsive Design */
 @media (max-width: 768px) {
   header {
     flex-direction: column;
@@ -242,26 +174,11 @@ form button {
     align-items: center;
   }
 
-  .content-filtro input {
+  .content-filtro input, .content-filtro button, button {
     width: 100%;
-  }
-
-  .content-filtro button {
-    width: 100%;
-  }
-
-  button {
-    width: 100%;
-  }
-
-  #divnuevocomentario,
-  #diveditarcomentario {
-    width: 100%;
-    max-width: none;
   }
 }
 
-/* Footer */
 footer {
   background-color: #3f3f3f6c;
   color: #fff;
@@ -269,6 +186,4 @@ footer {
   padding: 10px 0;
   margin-top: auto;
   width: 100%;
-  position: relative;
-  bottom: 0;
 }
