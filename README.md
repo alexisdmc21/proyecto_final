@@ -1,4 +1,13 @@
-Trabajo en grupo
+# Actividad de aprendizaje N.°1 - 2do Parcial
+# Gestión de Post y Comentarios en una Red Social
+
+# Integrantes:
+
+- Alexis Damian Morales Cuasquer
+- Jessica Estefania Sanchez Ugsiña
+- Melanie Abigail Talavera Castillo
+
+# Propósito, estructura e instrucciones de uso.
 
 En la presente actividad se utiliza la librería de JS Jquery para crear una página web que se actualiza diariamente con información que le proporciona el usuario.
 
