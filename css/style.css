@@ -3,6 +3,7 @@
   padding: 0;
   box-sizing: border-box;
 }
+
 body {
   font-family: 'Arial', sans-serif;
   background: url('../img/banner.png') no-repeat center/cover fixed;
@@ -43,6 +44,7 @@ header img {
 header h1 {
   font-size: 1.8rem;
 }
+
 button {
   background: #08472ab7;
   color: #fff;
@@ -56,9 +58,7 @@ button:hover {
   background: #062d1f;
 }
 
-form,
-.post,
-#comentarios {
+form, .post, #comentarios {
   background: #fff;
   padding: 20px;
   border-radius: 8px;
@@ -69,14 +69,12 @@ form,
   flex-direction: column;
   gap: 15px;
 }
-form span,
-.post span {
+form span, .post span {
   display: block;
   margin-bottom: 10px;
   font-weight: bold;
 }
-form input,
-form select {
+form input, form select {
   width: 100%;
   padding: 10px;
   margin-bottom: 15px;
@@ -86,6 +84,9 @@ form select {
 
 .post {
   position: relative;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  padding-bottom: 10px;
 }
 .post::before {
   content: "";
@@ -101,6 +102,10 @@ form select {
 }
 .post p {
   margin-bottom: 15px;
+  white-space: normal;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  text-align: left;
 }
 .post button {
   align-self: center;
@@ -109,14 +114,23 @@ form select {
   width: 100%;
 }
 
+#comentarios {
+  margin-top: 10px;
+  width: 100%; max-width: 600px;
+}
 #comentarios div {
-  margin-bottom: 10px;
-  padding: 8px 0 8px 65px;
+  margin: 10px auto;
+  padding: 8px 10px 8px 65px;
   border: 1px solid #eee;
   border-radius: 5px;
   background: #fff;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
   position: relative;
+  white-space: normal;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: left;
+  width: 100%; max-width: 100%;
 }
 #comentarios div::before {
   content: "";
@@ -160,37 +174,25 @@ footer {
   header h1 {
     font-size: 1.6rem;
   }
-
   .content-filtro {
     flex-direction: column;
     gap: 15px;
   }
-
-  .content-filtro input,
-  .content-filtro button {
-    width: 100%;
-  }
-
-  form,
-  .post,
-  #comentarios {
+  .content-filtro input, .content-filtro button,
+  form, .post, #comentarios {
     width: 90%;
     padding: 15px;
   }
 }
+
 @media (min-width: 769px) and (max-width: 1024px) {
   header h1 {
     font-size: 1.7rem;
   }
-
   .content-filtro {
     gap: 20px;
   }
-
-  form,
-  .post,
-  #comentarios {
+  form, .post, #comentarios {
     width: 80%;
   }
 }
-
