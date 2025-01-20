@@ -3,11 +3,9 @@
   padding: 0;
   box-sizing: border-box;
 }
-
 body {
   font-family: 'Arial', sans-serif;
-  background: url('../img/banner.png') no-repeat center center fixed;
-  background-size: cover;
+  background: url('../img/banner.png') no-repeat center/cover fixed;
   color: #333;
   padding: 20px;
   display: flex;
@@ -16,7 +14,6 @@ body {
   position: relative;
   text-align: center;
 }
-
 body::before {
   content: "";
   position: absolute;
@@ -24,7 +21,7 @@ body::before {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(255, 255, 255, 0.548);
+  background: rgba(255, 255, 255, 0.548);
   z-index: -1;
 }
 
@@ -39,48 +36,47 @@ header {
   border-radius: 8px;
   margin-bottom: 20px;
 }
-
 header img {
   height: 50px;
   margin-bottom: 10px;
 }
-
 header h1 {
   font-size: 1.8rem;
 }
-
 button {
-  background-color: #08472ab7;
+  background: #08472ab7;
   color: #fff;
   padding: 10px 15px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: background 0.3s;
 }
-
 button:hover {
-  background-color: #062d1f;
+  background: #062d1f;
 }
 
-form, .post, #comentarios {
-  background-color: #fff;
+form,
+.post,
+#comentarios {
+  background: #fff;
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   margin: 20px auto;
-  width: 90%;
   max-width: 600px;
-  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
 }
-
-form span, .post span {
+form span,
+.post span {
   display: block;
   margin-bottom: 10px;
   font-weight: bold;
 }
-
-form input, form select {
+form input,
+form select {
   width: 100%;
   padding: 10px;
   margin-bottom: 15px;
@@ -91,35 +87,26 @@ form input, form select {
 .post {
   position: relative;
 }
-
 .post::before {
   content: "";
-  display: block;
   width: 70px;
   height: 70px;
   margin: 0 auto 15px;
-  background: url('../img/post.png') no-repeat center center;
-  background-size: cover;
+  background: url('../img/post.png') no-repeat center/cover;
 }
-
 .post h2 {
   font-size: 1.4rem;
   margin-bottom: 10px;
   color: #08472ab7;
 }
-
 .post p {
   margin-bottom: 15px;
 }
-
 .post button {
-  margin: 10px;
+  align-self: center;
+  margin: 10px 0;
   padding: 10px 15px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  width: 120px;
+  width: 100%;
 }
 
 #comentarios div {
@@ -127,17 +114,15 @@ form input, form select {
   padding: 8px 0 8px 65px;
   border: 1px solid #eee;
   border-radius: 5px;
-  background-color: #fff;
+  background: #fff;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
   position: relative;
 }
-
 #comentarios div::before {
   content: "";
   width: 50px;
   height: 50px;
-  background: url('../img/comment.png') no-repeat center center;
-  background-size: cover;
+  background: url('../img/comment.png') no-repeat center/cover;
   position: absolute;
   top: 10px;
   left: 10px;
@@ -146,10 +131,10 @@ form input, form select {
 .content-filtro {
   display: flex;
   justify-content: center;
+  align-items: center;
   gap: 10px;
   margin-bottom: 20px;
 }
-
 .content-filtro input {
   flex: 1;
   max-width: 300px;
@@ -157,33 +142,55 @@ form input, form select {
   border: 1px solid #ddd;
   border-radius: 5px;
 }
-
 .content-filtro button {
   flex-shrink: 0;
   max-width: 150px;
 }
 
-@media (max-width: 768px) {
-  header {
-    flex-direction: column;
-    text-align: center;
-  }
-
-  .content-filtro {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .content-filtro input, .content-filtro button, button {
-    width: 100%;
-  }
-}
-
 footer {
-  background-color: #3f3f3f6c;
+  background: #3f3f3f6c;
   color: #fff;
   text-align: center;
   padding: 10px 0;
   margin-top: auto;
   width: 100%;
 }
+
+@media (max-width: 768px) {
+  header h1 {
+    font-size: 1.6rem;
+  }
+
+  .content-filtro {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .content-filtro input,
+  .content-filtro button {
+    width: 100%;
+  }
+
+  form,
+  .post,
+  #comentarios {
+    width: 90%;
+    padding: 15px;
+  }
+}
+@media (min-width: 769px) and (max-width: 1024px) {
+  header h1 {
+    font-size: 1.7rem;
+  }
+
+  .content-filtro {
+    gap: 20px;
+  }
+
+  form,
+  .post,
+  #comentarios {
+    width: 80%;
+  }
+}
+
