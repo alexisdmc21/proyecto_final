@@ -14,7 +14,9 @@ $(document).ready(() => {
     if (filtrar_elementos === "") {
       alert("Campo vacio")
     } else {
-       $("#mostrar_filtrados").empty();
+      arraypost.forEach((element) => {
+        $("#mostrar").append(element);
+      });
       $("#mostrar").hide();
       $("#mostrar_filtrados").show();
       $("#t_filtro").text(

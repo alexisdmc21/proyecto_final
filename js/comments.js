@@ -4,6 +4,7 @@ $(document).ready(() => {
 
   let comentarioid = 1;
   let idpadre = "";
+  let comentarioedit = "";
 
   $(document).on("click", "#comentar", function () {
     $("#divnuevocomentario").show();
@@ -30,7 +31,8 @@ $(document).ready(() => {
       let divcomentario = $("<div></div>", {
         id: "comentario_post_" + comentarioid,
       });
-      let comentario = $("<p></p>").text(idcomentario);
+      let comentario = $("<p></p>", {id: "comentario_tx" + comentarioid,})
+      .text($("#idcomentario").val());
       let Eliminar = $("<button></button>", { id: "eliminar_comentario" }).text(
         "Eliminar"
       );
@@ -47,6 +49,8 @@ $(document).ready(() => {
         Eliminar.hide();
         $("#eliminar").hide();
 
+        comentarioedit = comentario.attr("id")
+
         $("#diveditarcomentario").show();
         $("#idcomentario_editar").val(comentario.text());
       });
@@ -56,14 +60,11 @@ $(document).ready(() => {
       //Editar comentario
       $("#formeditarcomentario").on("submit", (e) => {
         e.preventDefault();
-
-        const idcomentario_editar=$("#idcomentario_editar").val()
-
-        if ( idcomentario_editar=== "") {
+        if ($("#idcomentario_editar").val() === "") {
           alert("Los comentarios no pueden estar vacíos");
           $("#diveditarcomentario").hide();
-        } else {
-          comentario.text(idcomentario_editar);
+        } else if(comentarioedit === comentario.attr("id")){
+          $(`#${idpadre} #${comentarioedit}`).text($("#idcomentario_editar").val());
           $("#diveditarcomentario").hide();
         }
 
