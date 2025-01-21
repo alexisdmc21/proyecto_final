@@ -20,7 +20,7 @@ $(document).ready(() => {
   $("#formnuevocomentario").on("submit", (e) => {
     e.preventDefault();
 
-    const idcomentario=$("#idcomentario").val()
+    const idcomentario=$("#idcomentario").val();
 
 
     if (idcomentario === "") {
