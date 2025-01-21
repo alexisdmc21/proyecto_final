@@ -44,7 +44,12 @@ $(document).ready(() => {
       $(divcomentario).append(Eliminar);
       $(divcomentario).append(Editar);
 
-      Eliminar.on("click", () => divcomentario.remove());
+      Eliminar.on("click", () => {
+        divcomentario.fadeOut(500, function () {
+          divcomentario.remove(); 
+        });
+      });
+
       Editar.on("click", () => {
         Eliminar.hide();
         $("#eliminar").hide();
@@ -56,6 +61,7 @@ $(document).ready(() => {
       });
 
       $(`#${idpadre} #comentarios`).append(divcomentario);
+      divcomentario.hide().fadeIn(1000);
 
       //Editar comentario
       $("#formeditarcomentario").on("submit", (e) => {

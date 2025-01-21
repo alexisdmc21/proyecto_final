@@ -29,7 +29,11 @@ $(document).ready(() => {
       );
       let divComentarios = $("<div></div>", { id: "comentarios" });
 
-      Eliminar.on("click", () => div.remove());
+      Eliminar.on("click", () => {
+        div.fadeOut(500, function () {
+          div.remove(); 
+        });
+      });
 
       $(div).append(titulo);
       $(div).append(descripcion);
@@ -38,6 +42,7 @@ $(document).ready(() => {
       $(div).append(Comentar);
       $(div).append(divComentarios);
       $("#mostrar").append(div);
+      div.hide().fadeIn(1000);
       post = post + 1;
     }
     $("#intitulo").val("");
